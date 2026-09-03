@@ -1,3 +1,7 @@
+
+import java.util.Random;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,6 +12,10 @@
  * @author rotta
  */
 public class Inicio extends javax.swing.JFrame {
+    String codigoSecreto;
+    int intentos=0;
+    int ayudasUsadas=0; 
+    int digito1,digito2,digito3;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
@@ -16,6 +24,14 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        Random random=new Random();
+        int numeroAleatorio=random.nextInt(900)+100; 
+        codigoSecreto=String.valueOf(numeroAleatorio);// a num aleatorio lo transforma en texto
+       // System.out.println(" Codigo secreto generado"+codigoSecreto);
+      
+        jPNro1.setText(String.valueOf(codigoSecreto.charAt(0)));
+        jPNro2.setText(String.valueOf(codigoSecreto.charAt(1)));
+        jPNro3.setText(String.valueOf(codigoSecreto.charAt(2)));
     }
 
     /**
@@ -34,77 +50,101 @@ public class Inicio extends javax.swing.JFrame {
         jPNro2 = new javax.swing.JPasswordField();
         jPNro3 = new javax.swing.JPasswordField();
         jLmensaje = new javax.swing.JLabel();
-        jLimagen = new javax.swing.JLabel();
         jBRevelar = new javax.swing.JButton();
         jTIngresarNro = new javax.swing.JTextField();
+        jLimagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jDPantallaPrinc.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLCartel.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLCartel.setForeground(new java.awt.Color(255, 255, 0));
         jLCartel.setText("Codigo Secreto");
 
-        jPNro1.setText("jPasswordField1");
+        jPNro1.setEditable(false);
+        jPNro1.setBackground(new java.awt.Color(204, 51, 255));
+        jPNro1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jPNro1.setText("*");
+        jPNro1.setEchoChar('$');
 
-        jPNro2.setText("jPasswordField1");
+        jPNro2.setBackground(new java.awt.Color(255, 255, 51));
+        jPNro2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jPNro2.setText("*");
+        jPNro2.setEchoChar('$');
 
-        jPNro3.setText("jPasswordField1");
+        jPNro3.setBackground(new java.awt.Color(102, 255, 102));
+        jPNro3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jPNro3.setText("*");
+        jPNro3.setEchoChar('$');
 
         javax.swing.GroupLayout jPbotonesLayout = new javax.swing.GroupLayout(jPbotones);
         jPbotones.setLayout(jPbotonesLayout);
         jPbotonesLayout.setHorizontalGroup(
             jPbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPbotonesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPNro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jPNro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jPNro3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(49, 49, 49)
+                .addComponent(jPNro1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPNro2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPNro3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPbotonesLayout.setVerticalGroup(
             jPbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbotonesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPNro1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(jPNro2, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPNro1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(jPNro2)
                     .addComponent(jPNro3))
-                .addGap(36, 36, 36))
+                .addGap(32, 32, 32))
         );
 
+        jLmensaje.setBackground(new java.awt.Color(255, 255, 51));
         jLmensaje.setText("Por favor ingresa tres numeros");
 
+        jBRevelar.setBackground(new java.awt.Color(255, 0, 0));
+        jBRevelar.setForeground(new java.awt.Color(255, 0, 0));
         jBRevelar.setText("Revelar");
-        jBRevelar.addActionListener(this::jBRevelarActionPerformed);
+        jBRevelar.addActionListener();
+
+        jLimagen.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\trofeo.jpg")); // NOI18N
 
         jDPantallaPrinc.setLayer(jLCartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDPantallaPrinc.setLayer(jPbotones, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDPantallaPrinc.setLayer(jLmensaje, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDPantallaPrinc.setLayer(jLimagen, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDPantallaPrinc.setLayer(jBRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDPantallaPrinc.setLayer(jTIngresarNro, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDPantallaPrinc.setLayer(jLimagen, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDPantallaPrincLayout = new javax.swing.GroupLayout(jDPantallaPrinc);
         jDPantallaPrinc.setLayout(jDPantallaPrincLayout);
         jDPantallaPrincLayout.setHorizontalGroup(
             jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDPantallaPrincLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLCartel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDPantallaPrincLayout.createSequentialGroup()
-                        .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDPantallaPrincLayout.createSequentialGroup()
-                                .addComponent(jBRevelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDPantallaPrincLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jTIngresarNro, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jLimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDPantallaPrincLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLCartel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDPantallaPrincLayout.createSequentialGroup()
+                        .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDPantallaPrincLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTIngresarNro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77)
+                                .addComponent(jBRevelar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDPantallaPrincLayout.createSequentialGroup()
+                                .addGap(91, 91, 91)
+                                .addComponent(jPbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLimagen)))
+                .addGap(19, 19, 19))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDPantallaPrincLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142))
         );
         jDPantallaPrincLayout.setVerticalGroup(
             jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,27 +153,33 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jLCartel)
                 .addGap(18, 18, 18)
                 .addComponent(jPbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(39, 39, 39)
                 .addComponent(jLmensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTIngresarNro, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jDPantallaPrincLayout.createSequentialGroup()
-                        .addComponent(jBRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTIngresarNro, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jBRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        jTIngresarNro.getAccessibleContext().setAccessibleName("Ingrese 3 digitos-Enter");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDPantallaPrinc)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDPantallaPrinc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDPantallaPrinc)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDPantallaPrinc)
+                .addContainerGap())
         );
 
         pack();
