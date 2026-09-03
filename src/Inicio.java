@@ -27,21 +27,121 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDPantallaPrinc = new javax.swing.JDesktopPane();
+        jLCartel = new javax.swing.JLabel();
+        jPbotones = new javax.swing.JPanel();
+        jPNro1 = new javax.swing.JPasswordField();
+        jPNro2 = new javax.swing.JPasswordField();
+        jPNro3 = new javax.swing.JPasswordField();
+        jLmensaje = new javax.swing.JLabel();
+        jLimagen = new javax.swing.JLabel();
+        jBRevelar = new javax.swing.JButton();
+        jTIngresarNro = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLCartel.setText("Codigo Secreto");
+
+        jPNro1.setText("jPasswordField1");
+
+        jPNro2.setText("jPasswordField1");
+
+        jPNro3.setText("jPasswordField1");
+
+        javax.swing.GroupLayout jPbotonesLayout = new javax.swing.GroupLayout(jPbotones);
+        jPbotones.setLayout(jPbotonesLayout);
+        jPbotonesLayout.setHorizontalGroup(
+            jPbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPbotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPNro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jPNro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jPNro3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPbotonesLayout.setVerticalGroup(
+            jPbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPNro1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(jPNro2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPNro3))
+                .addGap(36, 36, 36))
+        );
+
+        jLmensaje.setText("Por favor ingresa tres numeros");
+
+        jBRevelar.setText("Revelar");
+        jBRevelar.addActionListener(this::jBRevelarActionPerformed);
+
+        jDPantallaPrinc.setLayer(jLCartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDPantallaPrinc.setLayer(jPbotones, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDPantallaPrinc.setLayer(jLmensaje, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDPantallaPrinc.setLayer(jLimagen, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDPantallaPrinc.setLayer(jBRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDPantallaPrinc.setLayer(jTIngresarNro, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDPantallaPrincLayout = new javax.swing.GroupLayout(jDPantallaPrinc);
+        jDPantallaPrinc.setLayout(jDPantallaPrincLayout);
+        jDPantallaPrincLayout.setHorizontalGroup(
+            jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDPantallaPrincLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLCartel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDPantallaPrincLayout.createSequentialGroup()
+                        .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDPantallaPrincLayout.createSequentialGroup()
+                                .addComponent(jBRevelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDPantallaPrincLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jTIngresarNro, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jDPantallaPrincLayout.setVerticalGroup(
+            jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDPantallaPrincLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLCartel)
+                .addGap(18, 18, 18)
+                .addComponent(jPbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLmensaje)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDPantallaPrincLayout.createSequentialGroup()
+                        .addComponent(jBRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTIngresarNro, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDPantallaPrinc)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jDPantallaPrinc)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBRevelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRevelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBRevelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,5 +169,15 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBRevelar;
+    private javax.swing.JDesktopPane jDPantallaPrinc;
+    private javax.swing.JLabel jLCartel;
+    private javax.swing.JLabel jLimagen;
+    private javax.swing.JLabel jLmensaje;
+    private javax.swing.JPasswordField jPNro1;
+    private javax.swing.JPasswordField jPNro2;
+    private javax.swing.JPasswordField jPNro3;
+    private javax.swing.JPanel jPbotones;
+    private javax.swing.JTextField jTIngresarNro;
     // End of variables declaration//GEN-END:variables
 }
