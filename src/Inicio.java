@@ -67,6 +67,7 @@ public class Inicio extends javax.swing.JFrame {
         jPNro1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jPNro1.setText("*");
         jPNro1.setEchoChar('$');
+        jPNro1.addActionListener(this::jPNro1ActionPerformed);
 
         jPNro2.setBackground(new java.awt.Color(255, 255, 51));
         jPNro2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -108,9 +109,7 @@ public class Inicio extends javax.swing.JFrame {
         jBRevelar.setBackground(new java.awt.Color(255, 0, 0));
         jBRevelar.setForeground(new java.awt.Color(255, 0, 0));
         jBRevelar.setText("Revelar");
-        jBRevelar.addActionListener();
-
-        jLimagen.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\trofeo.jpg")); // NOI18N
+        jBRevelar.addActionListener(this::jBRevelarActionPerformed);
 
         jDPantallaPrinc.setLayer(jLCartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDPantallaPrinc.setLayer(jPbotones, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -189,6 +188,13 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBRevelarActionPerformed
 
+    private void jPNro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPNro1ActionPerformed
+    jPNro1.setText(String.valueOf(codigoSecreto.charAt(0)));
+    jPNro2.setText(String.valueOf(codigoSecreto.charAt(1)));
+    jPNro3.setText(String.valueOf(codigoSecreto.charAt(2)));
+
+    }//GEN-LAST:event_jPNro1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,3 +233,4 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField jTIngresarNro;
     // End of variables declaration//GEN-END:variables
 }
+

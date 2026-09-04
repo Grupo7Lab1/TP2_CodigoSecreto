@@ -158,6 +158,9 @@
                 <Property name="text" type="java.lang.String" value="*"/>
                 <Property name="echoChar" type="char" value="$"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPNro1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPNro2">
               <Properties>
@@ -213,11 +216,6 @@
           </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLimagen">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\User\Downloads\trofeo.jpg"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
