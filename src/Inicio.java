@@ -1,13 +1,16 @@
 
 import java.util.Random;
-
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import java.awt.Image;
+import java.net.URL;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
+/*
  *
  * @author rotta
  */
@@ -15,7 +18,7 @@ public class Inicio extends javax.swing.JFrame {
     String codigoSecreto;
     int intentos=0;
     int ayudasUsadas=0; 
-    int digito1,digito2,digito3;
+    
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
@@ -23,16 +26,23 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form Inicio
      */
     public Inicio() {
-        initComponents();
-        Random random=new Random();
-        int numeroAleatorio=random.nextInt(900)+100; 
-        codigoSecreto=String.valueOf(numeroAleatorio);// a num aleatorio lo transforma en texto
-       // System.out.println(" Codigo secreto generado"+codigoSecreto);
-      
-        jPNro1.setText(String.valueOf(codigoSecreto.charAt(0)));
-        jPNro2.setText(String.valueOf(codigoSecreto.charAt(1)));
-        jPNro3.setText(String.valueOf(codigoSecreto.charAt(2)));
-    }
+    initComponents();
+
+    Random random = new Random();
+    int numeroAleatorio = random.nextInt(900) + 100;
+
+    codigoSecreto = String.valueOf(numeroAleatorio);
+
+    System.out.println("Codigo secreto: " + codigoSecreto);
+
+    jPNro1.setText(String.valueOf(codigoSecreto.charAt(0)));
+    jPNro2.setText(String.valueOf(codigoSecreto.charAt(1)));
+    jPNro3.setText(String.valueOf(codigoSecreto.charAt(2)));
+
+    jPNro1.setEchoChar('$');
+    jPNro2.setEchoChar('$');
+    jPNro3.setEchoChar('$');
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,10 +116,15 @@ public class Inicio extends javax.swing.JFrame {
         jLmensaje.setBackground(new java.awt.Color(255, 255, 51));
         jLmensaje.setText("Por favor ingresa tres numeros");
 
-        jBRevelar.setBackground(new java.awt.Color(255, 0, 0));
-        jBRevelar.setForeground(new java.awt.Color(255, 0, 0));
+        jBRevelar.setBackground(new java.awt.Color(204, 255, 204));
         jBRevelar.setText("Revelar");
         jBRevelar.addActionListener(this::jBRevelarActionPerformed);
+
+        jTIngresarNro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTIngresarNroKeyTyped(evt);
+            }
+        });
 
         jDPantallaPrinc.setLayer(jLCartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDPantallaPrinc.setLayer(jPbotones, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -140,10 +155,10 @@ public class Inicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLimagen)))
                 .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDPantallaPrincLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142))
+            .addGroup(jDPantallaPrincLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jLmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDPantallaPrincLayout.setVerticalGroup(
             jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +167,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jLCartel)
                 .addGap(18, 18, 18)
                 .addComponent(jPbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jLmensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addGroup(jDPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTIngresarNro, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +200,23 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBRevelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRevelarActionPerformed
-        // TODO add your handling code here:
+       if (ayudasUsadas == 0) {
+
+    jPNro1.setEchoChar((char) 0);
+    ayudasUsadas++;
+
+} else if (ayudasUsadas == 1) {
+
+    jPNro2.setEchoChar((char) 0);
+    ayudasUsadas++;
+
+} else {
+
+    JOptionPane.showMessageDialog(
+            this,
+            "No hay mas Revelaciones!"
+    );
+}
     }//GEN-LAST:event_jBRevelarActionPerformed
 
     private void jPNro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPNro1ActionPerformed
@@ -194,6 +225,64 @@ public class Inicio extends javax.swing.JFrame {
     jPNro3.setText(String.valueOf(codigoSecreto.charAt(2)));
 
     }//GEN-LAST:event_jPNro1ActionPerformed
+
+    private void jTIngresarNroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTIngresarNroKeyTyped
+        if (evt.getKeyChar() == '\n') {
+
+    String input = jTIngresarNro.getText();
+
+    if (input.length() != 3 || !input.matches("\\d+")) {
+
+        jLmensaje.setText("Por favor ingresa exactamente 3 numeros");
+
+        return;
+    }
+
+    intentos++;
+
+    if (input.charAt(0) == codigoSecreto.charAt(0)) {
+        jPNro1.setEchoChar((char) 0);
+    }
+
+    if (input.charAt(1) == codigoSecreto.charAt(1)) {
+        jPNro2.setEchoChar((char) 0);
+    }
+
+    if (input.charAt(2) == codigoSecreto.charAt(2)) {
+        jPNro3.setEchoChar((char) 0);
+    }
+
+    int numeroIngresado = Integer.parseInt(input);
+    int secreto = Integer.parseInt(codigoSecreto);
+
+    if (numeroIngresado == secreto) {
+
+        jPNro1.setEchoChar((char) 0);
+        jPNro2.setEchoChar((char) 0);
+        jPNro3.setEchoChar((char) 0);
+
+        jLmensaje.setText("Excelente! Adivinaste el codigo");
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Ganaste!\n"
+                + "Codigo correcto: " + codigoSecreto
+                + "\nIntentos totales: " + intentos
+        );
+
+        jBRevelar.setEnabled(false);
+        jTIngresarNro.setEnabled(false);
+
+    } else if (numeroIngresado < secreto) {
+
+        jLmensaje.setText("Es un Número mas alto");
+
+    } else {
+
+        jLmensaje.setText("Es un Número mas bajo");
+    }
+}
+    }//GEN-LAST:event_jTIngresarNroKeyTyped
 
     /**
      * @param args the command line arguments
