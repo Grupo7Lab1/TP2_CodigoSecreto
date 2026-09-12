@@ -114,7 +114,7 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         jLmensaje.setBackground(new java.awt.Color(255, 255, 51));
-        jLmensaje.setText("Por favor ingresa tres numeros");
+        jLmensaje.setText("Por favor ingresa tres numeros + ENTER");
 
         jBRevelar.setBackground(new java.awt.Color(204, 255, 204));
         jBRevelar.setText("Revelar");
